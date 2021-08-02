@@ -25,7 +25,6 @@ import java.util.List;
 @AllArgsConstructor(onConstructor = @__(@Autowired))
 public class PersonController {
 
-
     private final PersonService personService;
 
     @PostMapping
@@ -53,7 +52,7 @@ public class PersonController {
 
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void delete(@PathVariable Long id) throws PersonNotFoundException {
-        personService.delete(id);
+    public void deleteById(@PathVariable Long id) throws PersonNotFoundException {
+        personService.deletebyid(id);
     }
 }
