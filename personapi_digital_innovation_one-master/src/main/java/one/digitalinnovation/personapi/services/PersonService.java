@@ -57,8 +57,6 @@ public class PersonService {
         return createMessageResponse("Person successfully updated with ID ", savedPerson.getId());
     }
 
-
-
     private MessageResponseDTO createMessageResponse(String semitext, Long refid) {
         return MessageResponseDTO.builder()
                 .message(semitext + refid)

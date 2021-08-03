@@ -9,6 +9,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
+import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 
 import static one.digitalinnovation.personapi.utils.PersonUtils.createFakeDTO;
@@ -40,12 +41,13 @@ public class PersonServiceTest {
         MessageResponseDTO expectedSuccessMessage = createExpectedSuccessMessage(expectedSavedPerson.getId());
         MessageResponseDTO successMessage = personService.create(personDTO);
 
+
         assertEquals(expectedSuccessMessage, successMessage);
     }
 
-    private MessageResponseDTO createExpectedSuccessMessage(Long savedPersonId) {
+    private MessageResponseDTO createExpectedSuccessMessage(Long id) {
         return MessageResponseDTO.builder()
-                .message("Person successfully created with ID " + savedPersonId)
+                .message("Person successfully created with ID " + id)
                 .build();
     }
 
