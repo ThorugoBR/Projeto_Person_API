@@ -50,16 +50,18 @@ public class PersonService {
                 .collect(Collectors.toList());
     }
 
-    public MessageResponseDTO update(Long id, PersonDTO personDTO) throws PersonNotFoundException {
-        Person person = verifyIfExists(id);
-        Person updatedPerson = personMapper.toModel(personDTO);
-        Person savedPerson = personRepository.save(updatedPerson);
+    public MessageResponseDTO updateById(Long id, PersonDTO personDTO) throws PersonNotFoundException {
+        verifyIfExists(id);
+        Person personToUpdate = personMapper.toModel(personDTO);
+        Person savedPerson = personRepository.save(personToUpdate);
         return createMessageResponse("Person successfully updated with ID ", savedPerson.getId());
     }
 
-    private MessageResponseDTO createMessageResponse(String s, Long id2) {
+
+
+    private MessageResponseDTO createMessageResponse(String semitext, Long refid) {
         return MessageResponseDTO.builder()
-                .message(s + id2)
+                .message(semitext + refid)
                 .build();
     }
 
